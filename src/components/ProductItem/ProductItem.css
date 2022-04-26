@@ -1,0 +1,97 @@
+
+.product-item{
+    position: relative;
+}
+.product-img img{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+.product-img{
+    height: auto;
+}
+.product-detail{
+    background:#fff;
+    padding-left: 10px;
+    padding-top:6px;
+    padding-bottom: 6px;
+}
+.product-price{
+    font-size:16px;
+    font-weight: 600;
+    margin: 6px 0;
+    
+}
+.product-size{
+    font-size:13px;
+    color:#7c7c7c;
+}
+.product-color{
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+.product-color span{
+    display: block;
+    width:8px;
+    height:8px;
+    margin-right:10px;
+    border-radius: 4px;
+    opacity: 0.6;
+    cursor: pointer;
+}
+.liked{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index:99;
+    color:#fff;
+    font-size:20px;
+    cursor: pointer;
+    
+}
+.liked.saved{
+    color:red;
+}
+
+.discount{
+    height: 50px;
+    font-size: 12px;
+    width: 50px;
+    background: url('../../assets/icons/discount.png');
+    position: absolute;
+    left: 0;
+    top: 0;
+    color:#fff;
+    padding: 7px;
+}
+.discount span{
+    display: inline-block;
+    transform: rotate(-45deg);
+}
+.blue{
+    background: #73A39D;
+}
+.green{
+    background: #84CC4C;
+}
+.grey{
+    background: #B5A8A1;
+}
+.brown{
+    background: #AB844A;
+}
+.skyblue{
+    background: #6977F0;
+}
+.white{
+    background: #FFFFFF;
+    border:1px solid #e7e7e7;
+}
+.darkgrey{
+    background: #141414;
+}
+.red{
+    background: #FF0000;
+
+}

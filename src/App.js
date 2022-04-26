@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import './App.css';
+import React from 'react';
+import Homepage from './components/Homepage/Homepage';
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
+import About from './components/About/About';
+import {Route, Switch} from 'react-router-dom';
+import News from './components/News/News';
+import Help from './components/Help/Help';
+import Collections from './components/Collections/Collections';
+import Saved from './pages/Saved/Saved';
+import CollectionPage from './pages/CollectionPage/CollecitonPage';
+
+const App = () =>{  
+
+    return (
+      <div>
+        <Header/>
+      <Switch>
+          <Route exact path="/" component={Homepage}/>
+          <Route path="/about" component={About}/>
+          <Route path="/news" component={News}/>
+          <Route path="/help" component={Help}/>
+          <Route path="/saved" component={Saved}/>
+          <Route path="/collections" component={Collections}/>
+          <Route path="/collection-page/:id" component={CollectionPage}/>
+        </Switch>
+        <Footer/>
+      </div>
+    );
+ 
 }
 
 export default App;

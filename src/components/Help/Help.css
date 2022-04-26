@@ -1,0 +1,36 @@
+.help-img{
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+.help{
+    background: #ececec;
+}
+.help .card{
+    border:none;
+    border-radius: 0;
+    margin-bottom: 12px;
+}
+.help .card-title{
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 0;
+}
+.help .card-header{
+    border:none;
+    background: none !important;
+    padding: 20px !important;
+
+}
+.help .card-body{
+    color: #354455;
+}
+.help-arrow {
+    transform: rotate(180deg);
+    transition: 0.3s;
+    margin-left: 10px;
+}
+
+.collapsed .help-arrow{
+    transform: rotate(0deg);
+}

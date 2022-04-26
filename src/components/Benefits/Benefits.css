@@ -1,0 +1,31 @@
+.benefit-box{
+    background: #fff;
+    text-align: center;
+    padding:30px 10px;
+    height:250px;
+}
+.benefit-box img{
+    width:61px;
+    margin-bottom: 25px;
+    height:61px;
+}
+.benefit-title{
+    font-size:14px;
+    margin-bottom: 10px;
+}
+.benefit-text{
+    color:#979797;
+    font-size: 14px;
+}
+.benefit{
+    padding-right: 15px;
+}
+.benefit .col-lg-3{
+    padding-left: 8px;
+    
+}
+@media(max-width:576px){
+    .benefit{
+        padding-left: 7px;
+    }
+}

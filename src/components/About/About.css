@@ -1,0 +1,32 @@
+.component-path{
+    height:60px;
+    background: #fff;
+    margin-bottom: 12px;
+}
+.about{
+    background: #ececec;
+    padding-bottom: 50px;
+}
+
+.about-img{
+    width: 50%;
+    margin-right: 10px;
+}
+.about-img img{
+    width:100%;
+    margin-bottom: 10px;
+}
+.about-description{
+    background: #fff;
+    padding:15px 24px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+   
+}
+.about-description h2{
+    font-size: 24px;
+    margin-bottom: 12px;
+}
+.about-description p{
+    color:#979797;
+}

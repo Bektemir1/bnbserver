@@ -1,0 +1,11 @@
+.product-mobile{
+    display: none;
+}
+@media(max-width:576px){
+    .product-mobile{
+        display: block;
+    }
+    .product-desktop{
+        display: none !important;
+    }
+}

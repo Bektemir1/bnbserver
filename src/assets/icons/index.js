@@ -1,0 +1,22 @@
+const icons = {
+    mainLogo: require('./logo.svg').default,
+    heartIcon: require('./heart.svg').default,
+    whiteHeartIcon: require('./whiteHeart.svg').default,
+    cartIcon: require('./cart-icon.svg').default,
+    searchIcon:require('./search.svg').default,
+    arrowRight: require('./arrowRight.svg').default,
+    arrowBottom: require('./arrowBottom.svg').default,
+    money:require('./money.svg').default,
+    shop:require('./shop.svg').default,
+    headphone:require('./headphone.svg').default,
+    truck:require('./truck.svg').default,
+    email:require('./email.svg').default,
+    instagram:require('./instagram.svg').default,
+    logoWhite:require('./logoWhite.svg').default,
+    phone:require('./phone.svg').default,
+    whatsapp:require('./whatsapp.svg').default,
+    telegram:require('./telegram.svg').default,
+    burger:require('./burger.svg').default,
+    closeMenu:require('./closeMenu.svg').default,
+}
+export default icons;
