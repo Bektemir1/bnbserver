@@ -1,0 +1,138 @@
+.product-detail{
+    background: #ececec;
+    padding: 0;
+}
+.detail-img{
+    width: 50%;
+    padding:5px;
+}
+.detail-img-box{
+    height: 200px;
+    margin-bottom: 30px;
+
+}
+.color-box{
+    width: 20px;
+    height: 20px;
+    border:1px solid transparent;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   cursor:pointer;
+   margin-left: 5px;
+}
+.color-box.active{
+    border-color:#ececec;
+}
+.color-box:hover{
+    border-color:#ececec;
+}
+
+.detail-img-small{
+    height: 100%;
+    padding: 5px;
+}
+.detail-info{
+    background: #fff;
+    padding:20px;
+    margin-top: 5px;
+}
+.detail-info .product-color span{
+    width: 10px;
+    height: 10px;
+    border-radius:100%;
+    margin: 0 !important;
+}
+.detail-main-title{
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+.detail-subtitle{
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+.detail-subtitle span{
+    margin-left: 10px;
+}
+.detail-info .product-color span:first-child{
+    margin-left: 10px;
+}
+.detail-price{
+    font-size: 24px;
+    margin: 20px 0;
+}
+.detail-price span{
+    font-size: 14px;
+    margin-left: 10px;
+    color:#979797;
+    text-decoration: line-through;
+}
+.desc-title{
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+.detail-desc{
+    color:#6a6a6a;
+    line-height:180%;
+}
+.add{
+    width:calc(100% - 55px);
+    margin-right: 10px;
+}
+.add img{
+    margin-right: 10px;
+}
+.save{
+    width: 45px;
+}
+
+.add, .save{
+    background: #1D1D1B;
+    height: 45px;
+    border:none;
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    color:#fff;
+    transition: 0.3s;
+}
+.add-black{
+    position: absolute;
+    left: 29.6%;
+    width:20px;
+    opacity:0;
+}
+
+.detail-info .price-after{
+    font-size: 18px;
+}
+.detail-mob-img{
+    display: none;
+    width: 100%;
+}
+.detail-mob-img .detail-img{
+    height:auto;
+    width: 100%;
+}
+.detail-params{
+    display: flex;
+    align-items: center;
+}
+.similar-row{
+    padding-right: 15px;
+    padding-left: 7px;
+}
+@media(max-width:768px){
+    .detail-mob-img{
+        display: block
+    }
+    .detail-desc-img{
+        display: none;
+    }
+    .detail-params{
+        flex-direction: column;
+        align-items:flex-start
+    }
+}

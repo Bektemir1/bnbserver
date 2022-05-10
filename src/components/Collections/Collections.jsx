@@ -1,24 +1,16 @@
-import React,{useState, useEffect} from 'react';
+import React,{useEffect} from 'react';
+import { useDispatch,useSelector } from 'react-redux';
+import { getAllCategories } from '../../redux/category/category-action';
 import CollectionItem from '../CollectionItem/CollectionItem';
 import './Collections.css'
-import axios from 'axios';
 
 const Collections = ({history}) =>{
-  const [categories, setCategories] = useState([])
-    
+    const categories = useSelector(state=>state.category.categories)
+    const dispatch = useDispatch();
     useEffect(()=>{
-        const getCategories= async()=>{
-            await axios.get(`http://localhost:8000/api/getCategories`)
-            .then((res)=>{
-                setCategories(res.data.categories) 
-            })
-            .catch((e)=>{
-                console.log(e)
-            })    
-    
-        }
-        
-        getCategories()
+        dispatch(getAllCategories())
+      
+
        
    },[])
 
@@ -31,6 +23,7 @@ const Collections = ({history}) =>{
                     <h2 className="title-parent">Коллекции</h2>
                     <div className="row collection-row">
                             {   
+                              
                                  categories.map((item,index)=> {
                                     return  <div  key={index} className="col-lg-3 col-md-4 col-sm-6 pr-0 pl-2 "><CollectionItem  category={item}/></div>
                                 })

@@ -3,63 +3,45 @@ import './Homepage.css';
 import CollectionItem from '../CollectionItem/CollectionItem';
 import ProductItem from '../ProductItem/ProductItem';
 import Benefits from '../Benefits/Benefits';
-import axios from 'axios';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
-import {connect} from 'react-redux';
-import { getAllProducts } from '../../redux/products/product-action';
+import {Navigation, Pagination,} from 'swiper'
+import {useSelector, useDispatch} from 'react-redux';
+import {getAllProducts } from '../../redux/products/product-action';
+import { getAllCategories } from '../../redux/category/category-action';
+import 'swiper/css/pagination';
 
 
-const Homepage = ({products,getAllProducts}) => {
-    
-    // const [products,setProducts] = useState([])
+const Homepage = () => {
+    const [limit,setLimit] = useState(4);
+    const [bestLimit, setBestLimit] = useState(4)
+    const [novLimit, setNovLimit] = useState(4)
 
-    const [categories, setCategories] = useState([])
-    
-    const [collectionPaginationParams,setCollectionPaginationParams] = useState({page:1,limit:4})
+
+    const products = useSelector(state=>state.product.products)
+
+    const categories = useSelector(state=>state.category.categories);
+
+
+    const dispatch = useDispatch();
     
     useEffect(()=>{
-        const getCategories= ()=>{
-            axios.get(`http://localhost:8000/api/getCategories?page=${collectionPaginationParams.page}&limit=${collectionPaginationParams.limit}`)
-            .then((res)=>{
-                setCategories(res.data.categories) 
-            })
-            .catch((e)=>{
-                console.log(e)
-            })    
-    
-        }
-        
-        getCategories()
-       
-   },[collectionPaginationParams])
+        dispatch(getAllCategories(limit))
+        dispatch(getAllProducts())
+     
+    },[limit])
 
-   useEffect(()=>{
-       const getProducts = ()=>{
-           axios.get(`http://localhost:8000/api/getProducts`)
-           .then((res)=>{
-                getAllProducts(res.data.products);
-              
-           }).catch((e)=>{
-               console.log(e)
-           })
-         
-       }
-       getProducts()
-   },[getAllProducts])
+ 
 
-
-
-    
-
-        return(
+    return(
             <div className='homepage'>
                <div className="container">
                     <div className="home-slider">
                     <Swiper
-                       slidesPerView={1}
-                       spaceBetween={10}
-                       autoplay Navigation Pagination
+                        modules={[Pagination]}
+                        slidesPerView={1}
+                        spaceBetween={10}
+                        pagination={{clickable:true}}
                        >
                         <SwiperSlide><div className="slider-item"></div></SwiperSlide>
                         <SwiperSlide><div className="slider-item"></div></SwiperSlide>
@@ -76,8 +58,9 @@ const Homepage = ({products,getAllProducts}) => {
                             <div className="row product-desktop">
                                 {
                                     products.filter(item=>item.bestseller).map((item,index)=>{
-                                        
-                                        return <div key={index}  className="col-lg-3 col-md-4 col-sm-6 pr-0"><ProductItem product={item}/></div>
+                                        if(index < bestLimit){
+                                            return <div key={index}  className="col-lg-3 col-md-4 col-sm-6 pr-0"><ProductItem product={item}/></div>
+                                        }
                                     })
                                 }
                            
@@ -87,14 +70,19 @@ const Homepage = ({products,getAllProducts}) => {
                                 <Swiper>
                                     {
                                         products.filter(item=>item.bestseller).map((item,index)=>{
-                                            return <SwiperSlide key={index}><div   className="col-lg-3 col-md-4 col-sm-6"><ProductItem product={item}/></div></SwiperSlide>
+                                            if(index < bestLimit){
+                                                return <SwiperSlide key={index}><div className="col-lg-3 col-md-4 col-sm-6"><ProductItem product={item}/></div></SwiperSlide>
+                                      
+                                            }
                                         })
                                     }
                                 </Swiper>
                             </div>
                         
                         <div className="text-center">
-                            <button className="load-more">Еще</button>
+                            {
+                                bestLimit < 8  ? <button onClick={()=>setBestLimit(bestLimit+4)} className="load-more">Еще</button> : ''
+                            }
                         </div>
                     </div>
 
@@ -103,7 +91,10 @@ const Homepage = ({products,getAllProducts}) => {
                             <div className="row product-desktop">
                                 {
                                     products.filter(item=>item.novelty).map((item,index)=>{
-                                        return <div key={index}  className="col-lg-3 col-md-4 col-sm-6 pr-0"><ProductItem product={item}/></div>
+                                        if(index < novLimit){
+                                            return <div key={index}  className="col-lg-3 col-md-4 col-sm-6 pr-0"><ProductItem product={item}/></div>
+                                   
+                                        }   
                                     })
                                 }
                             </div>
@@ -111,14 +102,19 @@ const Homepage = ({products,getAllProducts}) => {
                                 <Swiper>
                                     {
                                         products.filter(item=>item.novelty).map((item,index)=>{
-                                            return <SwiperSlide  key={index}><div  className="col-lg-3 col-md-4 col-sm-6"><ProductItem product={item}/></div></SwiperSlide>
+                                            if(index < novLimit){
+                                                return <SwiperSlide  key={index}><div  className="col-lg-3 col-md-4 col-sm-6"><ProductItem product={item}/></div></SwiperSlide>
+                                       
+                                            }    
                                         })
                                     }
                                 </Swiper>
                             </div>
                         
                         <div className="text-center">
-                            <button className="load-more">Еще</button>
+                            {
+                                novLimit < 8   ? <button onClick={()=>setNovLimit(novLimit+4)} className="load-more">Еще</button> : ''
+                            }
                         </div>
                     </div>
 
@@ -152,8 +148,8 @@ const Homepage = ({products,getAllProducts}) => {
                            
                         </div>
                         {
-                            collectionPaginationParams.limit < 8 ? <div className="text-center"><button className="load-more" onClick={()=>setCollectionPaginationParams(collectionPaginationParams.limit+4)}>Еще</button></div>
-                            : ''
+                           limit < 8 ?  <div className="text-center"><button onClick={()=>setLimit(8)} className="load-more">Еще</button></div> : ''
+                         
                         }
                     </div>
 
@@ -168,10 +164,6 @@ const Homepage = ({products,getAllProducts}) => {
             </div>
         )
     }
-const mapStateToProps = ({product:{products}}) =>({
-    products
-})
-const mapDispatchToProps = dispatch =>({
-    getAllProducts:item => dispatch(getAllProducts(item))
-})
-export default connect(mapStateToProps, mapDispatchToProps)(Homepage);
+
+
+export default Homepage;

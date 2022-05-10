@@ -1,8 +1,9 @@
 import productActionType from "./product-type";
+import { updateProduct } from "./product-utils";
 const INITIAL_STATE = {
-    products:[]
+    products:[],
+    search:""
 }
-
 
 const productReducer = (state=INITIAL_STATE,action) =>{
     switch(action.type){
@@ -12,15 +13,18 @@ const productReducer = (state=INITIAL_STATE,action) =>{
                 products: action.payload  
             }
         case productActionType.UPDATE_PRODUCT:
-            console.log('product reducer')
             return {
                 ...state,
-                products: state.products.map(item=>{
-                    if(item._id === action.payload._id){
-                        return {...item, saved: action.payload.saved}
-                    }
-                    return item
-                })
+                products:updateProduct(state.products,action.payload),
+             
+               
+               
+               
+            }
+        case productActionType.SEARCH_PRODUCT:
+            return{
+                ...state,
+                search:action.payload
             }
         default:
             return state;

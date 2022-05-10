@@ -23,18 +23,18 @@ const Footer  = () =>{
                     <div className="col-lg-3 col-md-4 col-sm-6 mb-3">
                         <h2 className='footer-title'>Контакты</h2>
                         <ul>
-                            <li><img src={icons.phone} alt=""/>+996 000 000</li>
-                            <li><img src={icons.phone} alt=""/>+996 000 000</li>
-                            <li><img src={icons.email} alt=""/>mail@gmail.com</li>
+                            <li><img src={icons.phone} alt=""/><a className="footer-link" href="tel:+996 500 123 456">+996 500 123 456</a></li>
+                            <li><img src={icons.phone} alt=""/><a className='footer-link' href="tel:+996 500 123 456">+996 500 123 456</a></li>
+                            <li><img src={icons.email} alt=""/><a className="footer-link" href="mailto:mail@gmail.com">mail@gmail.com</a></li>
                         </ul>
                     </div>
 
                     <div className="col-lg-3 col-md-4 col-sm-6 mb-3">
                         <h2 className='footer-title'>Мы в социальных сетях</h2>
                         <ul>
-                            <li><img src={icons.instagram} alt=""/>Instagram</li>
-                            <li><img src={icons.telegram} alt=""/>Telegram</li>
-                            <li><img src={icons.whatsapp} alt=""/>Whatsapp</li>
+                            <li><img src={icons.instagram} alt=""/><a className="footer-link" target="_blank" href="https://instagram.com/zeon.ithub">Instagram</a></li>
+                            <li><img src={icons.telegram} alt=""/><a className='footer-link' target="_blank" href="https://telegram.me/@Zeonitcommunity" >Telegram</a></li>
+                            <li><img src={icons.whatsapp} alt=""/><a className='footer-link' target="_blank" href="https://wa.me/500123456">Whatsapp</a></li>
                         </ul>
                     </div>
                     <p className='copyright'>Developed by Zeon 2022</p>

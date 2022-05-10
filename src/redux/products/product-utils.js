@@ -1,4 +1,11 @@
 export const updateProduct = (products,updatedProduct) =>{
-   products = products.filter(item=>item._id !== updatedProduct._id);
-   return products;
+
+    return   products.map(item=>{
+         if(item._id === updatedProduct._id){
+            return {...item, saved: updatedProduct.saved}
+         }
+         return item
+      })
+   
+   
 }

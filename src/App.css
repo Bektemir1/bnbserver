@@ -64,16 +64,38 @@ a, a:hover{
   font-size:24px;
   margin: 20px 0;
 }
-.empty-box{
-  height:400px;
-  display: flex;
-  align-items: center;
-  width: 100%;
-  justify-content: center;
-  font-size:26px;
+.ablue,.agreen,.agrey,.abrown,.askyblue,.awhite,.adarkgrey,.red{
+  border-color:#ececec;
+}
+.blue{
+  background: #73A39D;
+}
+.green{
+  background: #84CC4C;
+}
+.grey{
+  background: #B5A8A1;
+}
+.brown{
+  background: #AB844A;
+}
+.skyblue{
+  background: #6977F0;
+}
+.white{
+  background: #FFFFFF;
+  border:1px solid #e7e7e7;
+}
+.darkgrey{
+  background: #141414;
+}
+.red{
+  background: #FF0000;
+
 }
 @media(max-width:768px){
   .title-parent{
     margin: 20px 0;
+    font-size:18px;
   }
 }

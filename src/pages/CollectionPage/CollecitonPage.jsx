@@ -1,28 +1,21 @@
-import React, {useState, useEffect} from 'react';
+import  {useState, useEffect} from 'react';
 import ProductItem from '../../components/ProductItem/ProductItem';
 import './CollectionPage.css'
 import axios from 'axios'
-import {connect} from 'react-redux';
+import {useDispatch,useSelector} from 'react-redux';
 import { getAllProducts } from '../../redux/products/product-action';
+import Pagination from '../../components/Pagination/Pagination'
 
-const CollectionPage = ({match,history,products,getAllProducts}) =>{
-    
+
+const CollectionPage = ({match,history}) =>{
+  
+
     const [category,setCategory] = useState({})
+    const products = useSelector(state=>state.product.products)
+    const dispatch = useDispatch();
 
     useEffect(()=>{
-        const getProducts = async()=>{
-            await axios.get(`http://localhost:8000/api/getProducts`)
-            .then((res)=>{
-                getAllProducts(res.data.products);
-               
-            }).catch((e)=>{
-                console.log(e)
-            })
-          
-        }
-
-      
-    getProducts()
+        dispatch(getAllProducts())
 
     },[])
 
@@ -31,10 +24,7 @@ const CollectionPage = ({match,history,products,getAllProducts}) =>{
             await axios.get(`http://localhost:8000/api/getCategory/${match.params.id}`)
             .then((res)=>{
                 setCategory(res.data.category)
-                console.log(category)
-                
-
-
+               
             })
             .catch((e)=>{
                 console.log(e)
@@ -57,23 +47,36 @@ const CollectionPage = ({match,history,products,getAllProducts}) =>{
             </div>
             <div className="container">
                 <h2 className='title-parent'>{category.name}</h2>
-                <div className="row">
+                <div className=" collection-row">
                     {
-                        products.filter(item=>item.category === category).map((item,index)=>{
-                            return <div key={index}  className="col-lg-3 col-md-4 col-sm-6 pr-0 pl-2"><ProductItem product={item}/></div>
+
+                            products.filter(item=>item.category===category._id).length>8 ?
+                               <Pagination
+                                        data={products.filter(item=>item.category===category._id)}
+                                        RenderComponent={ProductItem}
+                                        pageLimit={3}
+                                        dataLimit={6}
+                                    />
+                        :
+                        products.filter(item=>item.category === category._id).map((item,index)=>{
+                            return (
+                                <div key={index} className="col-lg-3 col-md-4 col-sm-6 pr-0 pl-2">
+                                    <ProductItem key={index} product={item} />
+                                </div>
+                            )
                         })
+                       
+                                  
+                                        // <div key={index}  className="col-lg-3 col-md-4 col-sm-6 pr-0 pl-2"><ProductItem product={item}/></div>
+                          
                     }
                            
                 </div>
+             
             </div>
            
         </div>
     )
 }
-const mapDispatchToProps = dispatch => ({
-    getAllProducts: item => dispatch(getAllProducts(item))
-})
-const mapStateToProps = ({product: {products}}) =>({
-    products
-})
-export default connect(mapStateToProps, mapDispatchToProps)(CollectionPage);
+
+export default CollectionPage;

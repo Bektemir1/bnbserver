@@ -18,5 +18,9 @@ const icons = {
     telegram:require('./telegram.svg').default,
     burger:require('./burger.svg').default,
     closeMenu:require('./closeMenu.svg').default,
+    whiteBag:require('./whiteBag.svg').default,
+    plus:require('./plus.svg').default,
+    minus:require('./minus.svg').default,
+    bgHeart: require('./bgHeart.svg').default,
 }
 export default icons;

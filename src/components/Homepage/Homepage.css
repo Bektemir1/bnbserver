@@ -1,5 +1,7 @@
 /* slider in home page */
-
+.swiper{
+    padding-bottom: 20px !important;
+}
 .slider-item{
     height:500px;
     background: url('../../assets//imgs//sliderBackground.png') no-repeat;
@@ -48,6 +50,18 @@
     padding-right: 15px;
 }
 
+.swiper-pagination {
+    bottom:0px !important;
+}
+
+.swiper-pagination-bullet{
+    background: #fff !important;
+    border:1px solid #1d1d1b !important;
+    opacity: 1 !important;
+}
+.swiper-pagination-bullet-active{
+    background: #1d1d1b !important;
+}
 @media(max-width:576px){
     .slider-item{
         height:300px;

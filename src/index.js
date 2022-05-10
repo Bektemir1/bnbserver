@@ -10,12 +10,14 @@ import '@fortawesome/fontawesome-free/css/all.css'
 import '@fortawesome/fontawesome-free/js/all.js'     
 import {Provider} from 'react-redux';                                                                                                                                                                                                                                                                       
 import App from './App';
-import store from './redux/store'
+import store from './redux/store';
+import ScrollToTop from './components/ScrollTop';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>
     <BrowserRouter>
+      <ScrollToTop/>
       <App />
     </BrowserRouter>
   </Provider>

@@ -1,0 +1,35 @@
+.basket{
+    background: #ececec;
+}
+
+.order{
+    background: #fff;
+    padding:24px;
+}
+.order-title{
+    font-size: 14px;
+    margin-bottom: 16px;
+}
+.order-table span:first-child{
+    color:#979797;
+    
+}
+.order-table {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.order-btn{
+    background: #E5271B;
+    height:45px;
+    width: 100%;
+    border:1px solid transparent;
+    color:#fff;
+    transition: 0.3s;
+    margin-top: 15px;
+}
+.order-btn:hover{
+    background: #fff;
+    border-color:#e5271b;
+    color:#e5271b;
+}

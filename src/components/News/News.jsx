@@ -1,24 +1,18 @@
-import React from 'react';
-import images from '../../assets/imgs/index'
+import React,{useEffect} from 'react';
 import './News.css';
+import { useSelector,useDispatch } from 'react-redux';
+
+import { getNews } from '../../redux/news/newsAction';
 
 
 const News = ({history}) => {
-    const str = `Sit ullamcorper at gravida quis feugiat. Laoreet leo dolor, dui eget sit viverra justo, malesuada. 
-    Viverra pharetra, augue neque felis enim dui id cum. 
-    At pellentesque diam nulla ac amet quisque quis. 
-    Est consectetur ullamcorper curabitur quis viverra hac molestie.
-     Elit pulvinar congue ut amet adipiscing felis tincidunt. Amet quis varius aliquam hendrerit tempus. Sed sit diam quis scelerisque
-    congu econgu econgu econguecongu econguecon guecon guecon guecong ueconguecong uec ongue.
-    Sit ullamcorper at gravida quis feugiat. Laoreet leo dolor, dui eget sit viverra justo, malesuada. Viverra pharetra, augue neque  
-    Sit ullamcorper at gravida quis feugiat. Laoreet leo dolor, dui eget sit viverra justo, malesuada. Viverra pharetra, augue neque felis 
-    enim dui id cum. At pellentesque diam nulla ac amet quisque quis. Est consectetur ullamcorper curabitur quis viverra hac molestie. 
-    Elit pulvinar congue ut amet adipiscing felis tincidunt.
-     Amet quis varius aliquam hendrerit tempus. Sed sit diam quis`
-    
-    const text = str.length<200 ? str : str.slice(0,200)+" . . . ";
-    const [showMore , setShowMore] = React.useState(true);     
+    const dispatch = useDispatch();
+   useEffect(()=>{
 
+    dispatch(getNews())
+   },[])
+
+   const news = useSelector(state=>state.news.news)
     return(
         <div className='news pb-5'>
             <div className='component-path d-flex align-items-center'> 
@@ -26,46 +20,23 @@ const News = ({history}) => {
             </div>
             <div className="container">
                 <h2 className='title-parent'>Новости</h2>
-                <div className="news-box">
-                    <img className='news-img' alt="" src={images.news1}/>
-                    <div>
-                        <h3>Lorem ipsum dolor sit amet.</h3>
-                        <p className='news-text-desktop'>{str}</p>
-                        <div className="news-text-mobile">
-                                {showMore ? text : str}
+               
+               {
+                   news.map((item)=>{
+                       return(
+                        <div key={item._id} className="news-box">
+                            <img className='news-img' alt="" src={'http://localhost:8000/images/'+item.img}/>
+                            <div>
+                                <h3>{item.name}</h3>
+                                <p>{item.description}</p> 
+                            </div>
 
-                            { str.length>200 ? <button className="news-read-more" onClick={()=>setShowMore(!showMore)}>{ showMore ? 'Читать полностью' : 'Скрыть'}</button> : ''}
-
-                        </div>           
-                     </div>
-                </div>
-
-                <div className="news-box">
-                    <img className='news-img' alt="" src={images.news2}/>
-                    <div>
-                        <h3>Lorem ipsum dolor sit amet.</h3>
-                        <div className="news-text-mobile">
-                                {showMore ? text : str}
-
-                            { str.length>200 ? <button className="news-read-more" onClick={()=>setShowMore(!showMore)}>{ showMore ? 'Читать полностью' : 'Скрыть'}</button> : ''}
-
-                        </div> 
                     </div>
-                </div>
+                       )
+                   })
+               }
 
-                <div className="news-box">
-                    <img className='news-img' alt="" src={images.news3}/>
-                    <div>
-                        <h3>Lorem ipsum dolor sit amet.</h3>
-                        <div className="news-text-mobile">
-                                {showMore ? text : str}
-
-                            { str.length>200 ? <button className="news-read-more" onClick={()=>setShowMore(!showMore)}>{ showMore ? 'Читать полностью' : 'Скрыть'}</button> : ''}
-
-                        </div> 
-                    </div>
-                </div>
-
+                
             </div>
         </div>
     )

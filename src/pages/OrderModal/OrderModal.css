@@ -1,0 +1,128 @@
+.order-modal .modal-content{
+    
+    width: 440px;
+    border-radius:0;
+    border:none;
+    padding: 20px 24px;
+}
+.swal-title{
+    background: url('../../assets//icons//check.png') no-repeat;
+    background-position-x: 50%;
+    padding-top: 75px;
+    margin-bottom:0 !important;
+}
+.swal-text{
+    font-size: 14px;
+    color:#393939;
+    text-align: center;
+}
+.swal-footer{
+    margin-top: 0 !important;
+}
+.swal-modal{
+    width: 330px !important;
+    text-align:center;
+    border-radius:0;
+}
+.swal-button-container{
+    display: block;
+}
+.swal-button{
+    background: #1d1d1b;
+    height:45px;
+    width: 100% !important;
+    border:1px solid transparent;
+    color:#fff;
+    transition: 0.3s;
+   
+    border-radius:0;
+}
+.swal-button:hover{
+    color:#1d1d1b;
+    border:1px solid #1d1d1b;
+    background: #fff !important;
+}
+.order-modal .modal-title{
+    font-size: 20px;
+    font-weight: 600;
+}
+.order-modal .modal-header{
+    border-bottom:none;
+    margin-bottom: 20px;
+    padding: 0;
+}
+.order-modal .modal-dialog{
+    width: 440px;
+}
+.order-modal .modal-body{
+    padding: 0;
+    max-height:100% !important;
+    height: 100% !important;
+}
+.order-form input,.order-number{
+    background: #FFFFFF;
+    border: 1px solid #E7E7E7;
+    box-sizing: border-box;
+    height: 44px;
+    width: 100%;
+    padding-left: 10px;
+    margin-bottom: 10px;
+    font-size: 13px;
+}
+.order-number{
+    display: flex;
+    padding-left: 0;
+
+}
+.order-number select{
+    height: 100%;
+    width: 20%;
+    border:none;
+    background: none;
+    padding-left: 5px;
+ 
+
+}
+.validation-class1{
+    color: #E5271B !important; 
+    
+
+}
+.validation-class2{
+
+    border-color: #E5271B !important;
+   
+}
+.public-link{
+    color:blue
+}
+.public-link:hover{
+    color:blue
+}
+.order-number input{
+    width: 80%;
+    height:100%;
+    border:none;
+}
+.order-form label{
+    color: #808080;
+    font-size: 13px;
+    margin-bottom: 4px;
+}
+.order-form .checkbox{
+    width: 16px;
+    height: 16px;
+}
+.agree-text{
+    font-size: 14px;
+}
+.order-btn.modal-btn{
+    background: #1d1d1b;
+    margin-top: 25px;
+    margin-bottom: 0;
+}
+.order-btn.modal-btn:hover{
+    color:#1d1d1b;
+    border:1px solid #1d1d1b;
+    background: #fff;
+}
